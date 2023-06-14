@@ -1,51 +1,84 @@
-# Bytebeam ESP IDF SDK
+# Tork Motors N58 Firmware
 
-<div>
-    <img alt="Bytebeam ESP IDF SDK Logo" src="docs/logo.png" />
-</div>
+This repo contains production N58 firmware for tork devices
 
----
+## Project Setup
 
-[![Component Registry](https://components.espressif.com/components/bytebeamio/bytebeam-esp-idf-sdk/badge.svg)](https://components.espressif.com/components/bytebeamio/bytebeam-esp-idf-sdk)
-[![PlatformIO Registry](https://badges.registry.platformio.org/packages/bytebeamio/library/bytebeam-esp-idf-sdk.svg)](https://registry.platformio.org/libraries/bytebeamio/bytebeam-esp-idf-sdk)
+```bash
+# clone the repo
+$ git clone https://github.com/bytebeamio/Tork_Motors_N58_FW.git
 
-This SDK consist of components that can be used for connecting ESP devices to [Bytebeam](https://bytebeam.io/) IoT platform
+# step into cloned repo directory
+$ cd Tork_Motors_N58_FW
+```
 
-## Features :-
+## Project Usage
 
-- Efficiently send data to cloud.
-- Receive commands from the cloud, execute them and update progress of execution.
-- Download Firmware images from cloud in case of OTA updates being triggered from cloud.
+### Environment Setup
 
-## What's included in the SDK :-
+```bash
+# setup nwy environment
+$ nwy_env.bat
+```
 
-- **components/bytebeam_esp_sdk** :-  This section contains source code for various functions that can be used by applications for interacting with Bytebeam platform. 
-- **examples** :- This folder conatins demo application's which demonstrates establishing secure connection with Bytebeam platform. Also, it demonstrates periodic data pushing and receiving actions.
-- **provisioning** :- This folder contains application for pushing device config data to file system of device (say SPIFFS).
+### Available Commands
+```bash
+# show nwy.py version
+$ nwy.py --version
 
-## Dependencies :-
+# show help message
+$ nwy.py --help
 
-- [ESP-IDF](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/) 
-- ESP32 Dev Board
+# enter boot mode
+$ nwy.py boot
 
-We recommend to install the latest version of the ESP-IDF.
+# trigger soft reset
+$ nwy.py reset
 
-## SDK Setup and Integration :-
+# build application
+$ nwy.py build
 
-This SDK can be integrated with new as well as existing ESP projects. Follow the [instruction guide](https://bytebeam.io/docs/esp-idf) for setting up and integrating SDK with your projects. 
+# flash executable
+$ nwy.py flash
 
-## Community :-
+# monitor output
+$ nwy.py monitor
 
-- Follow us on [Twitter](https://twitter.com/bytebeamhq)
-- Connect with us on [LinkedIn](https://www.linkedin.com/company/bytebeam/)
-- Read our official [Blog](https://bytebeam.io/blog/)
+# build differential ota image
+$ nwy.py build-ota
+```
 
-## Contributing :-
+## Developer Mode
 
-Contributions are welcome! Not only you’ll encourage the development of the SDK, but you’ll also learn how to best use the SDK and probably some C too.
+### Environment Setup
 
-See [the contributing guide](CONTRIBUTING.md) for detailed instructions on how to get started with the SDK. Please follow the [code of conduct](CODE_OF_CONDUCT.md) while contributing.
+```bash
+# setup nwy environment
+$ nwy_env.bat
 
-## License :-
+# install the python dependencies
+$ pip install -r requirements.txt
+```
 
-This SDK is licensed under the Apache License, Version 2.0 (see [LICENSE](LICENSE) for details).
+Add your python site packges path to the prebuilts\win32\python3\python36._pth
+### Making Changes
+
+Make changes to the nwy.py script and test the same using below python command format
+
+```bash
+# python commands format
+$ python script/nwy.py your_argument_goes_here
+```
+
+### Generating Binary
+
+```bash
+# step into script directory
+$ cd script
+
+# build nwy.py exectuable
+$ build_nwy.py.bat
+```
+
+**Note:** If you would like to share the changes with others, We recomment to increase the nwy.py version based on your changes :)
+
